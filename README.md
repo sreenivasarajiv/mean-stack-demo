@@ -9,7 +9,7 @@
 
 ### Ng-Github
 * Application is scaffolded using __angular/cli__ 
-* A demo app is hosted at _**[google.com](google.com)**_
+* A demo app is hosted at _**[https://sreenivasarajiv.github.io/mean-stack-demo/](https://sreenivasarajiv.github.io/mean-stack-demo/)**_
 * Application uses __Angular 6 and Bootstrap__ Frameworks.
 
 ### Express-API
