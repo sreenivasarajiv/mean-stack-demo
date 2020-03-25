@@ -4,8 +4,8 @@
 
 * This is a demo repo is to showcase my skills in __MEAN Stack Application Development__.
 * This source contains two seperate applications,
-1. __ng-github__ - an __angular application__, used to search and list github users.
-2. __express-api__ - an __expressJS__ based __RESTFUL API__ (using __MongoDB__ as database).
+1. __[ng-github](ng-github)__ - an __angular application__, used to search and list github users.
+2. __[express-api](express-api)__ - an __expressJS__ based __RESTFUL API__ (using __MongoDB__ as database).
 
 ### Ng-Github
 * Application is scaffolded using __angular/cli__ 
