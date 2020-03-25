@@ -1,3 +1,4 @@
-switch to gh-pages branch
+ng build --prod --base-href=/mean-stack-demo/
+switch to gh-pages branch - git checkout gh-pages
 cd to root level directory
 git subtree push --prefix ng-github/dist/ng-github origin gh-pages
