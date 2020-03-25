@@ -1,0 +1,34 @@
+<form class="form-inline m-3 mr-auto justify-content-center">
+    <div>
+        <input [(ngModel)]="searchTerm" class="form-control mr-sm-2" type="text" name="searchTerm"
+            placeholder="Search Github Users" (keyup.enter)="searchResult()" >
+        <button class="btn btn-secondary my-2 my-sm-0" type="button" (click)="searchResult()">Search</button>
+    </div>
+</form>
+<div class="justify-content-center">
+    <table *ngIf="users.length > 0" class="table table-responsive-sm table-responsive-md table-striped text-left">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Avatar</th>
+                <th scope="col">Username</th>
+                <th scope="col">Repos</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <th scope="row" class="align-middle">{{ user.id }}</th>
+                <td class="align-middle">
+                    <img [src]="user.avatar_url" class="mr-2" style="width: 75px">
+                </td>
+                <td class="align-middle">
+                    <a [href]="user.html_url" target="_blank">{{ user.login }}</a>
+                </td>
+                <td class="align-middle">
+                    <a [routerLink]="['/repos', user.repos_url]">{{ user.repos_url }}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="users.length === 0 || gs.blockUI.isActive" class="pt-5">User not found.</p>
+</div>

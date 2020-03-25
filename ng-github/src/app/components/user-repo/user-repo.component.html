@@ -1,0 +1,23 @@
+<div class="justify-content-center">
+    <table *ngIf="repos.length > 0" class="table table-responsive-sm table-responsive-md table-striped text-left">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Repo Name</th>
+                <th scope="col">URL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let repo of repos; index as i">
+                <th scope="row" class="align-middle">{{ i + 1 }}</th>
+                <td class="align-middle">
+                    {{ repo.name }}
+                </td>
+                <td class="align-middle">
+                    <a [href]="repo.html_url" target="_blank">{{ repo.html_url }}</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p *ngIf="repos.length === 0 || gs.blockUI.isActive" class="pt-5">No repository found.</p>
+</div>
