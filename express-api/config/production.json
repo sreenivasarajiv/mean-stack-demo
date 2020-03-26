@@ -1,0 +1,4 @@
+{
+	"CONNECTION_STRING": "mongodb://localhost/prod-test",
+	"PORT": 3000
+}

@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "express-api",
+    "description": "a demo application based on expressJS (RESTFUL API)"
+  },
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "Product Categories",
+      "description": "Simple Product Category endpoints"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "definitions": {
+    "ProductCategoryBody": {
+      "type": "object",
+      "title": "product-category",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Electronics"
+        },
+        "_id": {
+          "type": "string",
+          "example": "507f1f77bcf86cd799439011",
+          "readOnly": true
+        }
+      }
+    }
+  },
+  "paths": {
+    "/product-category": {
+      "get": {
+        "tags": [
+          "Product Categories"
+        ],
+        "description": "Fetch all Product Categories",
+        "responses": {
+          "200": {
+            "description": "Returns all Product Categories"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Product Categories"
+        ],
+        "description": "Create a new Product Category",
+        "parameters": [
+          {
+            "name": "example",
+            "in": "body",
+            "description": "an product category",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductCategoryBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns all product categories"
+          }
+        }
+      }
+    },
+    "/product-category/{id}": {
+      "get": {
+        "tags": [
+          "Product Categories"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The id of the product category to retrieve",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the product category with the specified id"
+          },
+          "404": {
+            "description": "Product Category not found"
+          }
+        }
+      }
+    }
+  }
+}
