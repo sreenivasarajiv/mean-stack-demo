@@ -3,3 +3,10 @@ switch to gh-pages branch - git checkout gh-pages
 git merge master (to gh-pages branch)
 cd to root level directory
 git subtree push --prefix ng-github/dist/ng-github origin gh-pages
+
+// heroku - deployment
+// navigate to root folder
+
+heroku login
+heroku git:remote -a mean-stack-demo-sreenivas
+git subtree push --prefix express-api heroku master
