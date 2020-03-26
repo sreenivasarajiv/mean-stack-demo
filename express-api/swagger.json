@@ -38,6 +38,11 @@
           "type": "string",
           "example": "507f1f77bcf86cd799439011",
           "readOnly": true
+        },
+        "totalProducts": {
+          "type": "integer",
+          "example": 10,
+          "readOnly": true
         }
       }
     },
