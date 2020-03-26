@@ -10,6 +10,10 @@
     {
       "name": "Product Categories",
       "description": "Simple Product Category endpoints"
+    },
+    {
+      "name": "Product",
+      "description": "Simple Product endpoints"
     }
   ],
   "consumes": [
@@ -29,6 +33,29 @@
         "name": {
           "type": "string",
           "example": "Electronics"
+        },
+        "_id": {
+          "type": "string",
+          "example": "507f1f77bcf86cd799439011",
+          "readOnly": true
+        }
+      }
+    },
+    "ProductBody": {
+      "type": "object",
+      "title": "product",
+      "required": [
+        "name",
+        "categoryId"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": "Electronics"
+        },
+        "categoryId": {
+          "type": "string",
+          "example": "507f1f77bcf86cd799439011"
         },
         "_id": {
           "type": "string",
@@ -94,6 +121,65 @@
           },
           "404": {
             "description": "Product Category not found"
+          }
+        }
+      }
+    },
+    "/product": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "description": "Fetch all Products",
+        "responses": {
+          "200": {
+            "description": "Returns all Products"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Product"
+        ],
+        "description": "Create a new Product",
+        "parameters": [
+          {
+            "name": "example",
+            "in": "body",
+            "description": "an product",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ProductBody"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns all products"
+          }
+        }
+      }
+    },
+    "/product/{id}": {
+      "get": {
+        "tags": [
+          "Product"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "The id of the product to retrieve",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Return the product with the specified id"
+          },
+          "404": {
+            "description": "Product not found"
           }
         }
       }

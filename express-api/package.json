@@ -5,13 +5,14 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "debug": "nodemon app.js"
+    "debug": "nodemon --inspect-brk app.js"
   },
   "keywords": [],
   "author": "Sreenivasa Rajiv <sreenivasarajiv@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "bson": "^1.1.4",
     "config": "^3.2.4",
     "debug": "^4.1.1",
     "express": "^4.17.1",

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { ProductCategory, validateProductCategory } = require('../models/product-category');
+const ObjectID = require('bson').ObjectID;
 
 // CREATE
 
@@ -19,13 +20,54 @@ router.post('/', async (req, res) => {
 
 // READ
 
+const _productCountQuery = [
+	{
+		'$lookup': {
+			'from': 'products',
+			'let': {
+				'categoryId': '$_id'
+			},
+			'pipeline': [
+				{
+					'$match': {
+						'$expr': {
+							'$eq': [
+								'$category._id', '$$categoryId'
+							]
+						}
+					}
+				}
+			],
+			'as': 'products'
+		}
+	}, {
+		'$project': {
+			'name': 1,
+			'totalProducts': {
+				'$size': '$products'
+			}
+		}
+	}
+];
+
 router.get('/:id', async (req, res) => {
-	const pc = await ProductCategory.findOne({ _id: req.params.id });
+
+	const _pipelineQuery = [
+		{
+			'$match': {
+				'_id': new ObjectID(req.params.id)
+			}
+		},
+		..._productCountQuery
+	];
+	const pc = await ProductCategory.collection.aggregate(_pipelineQuery).next();
+
 	pc ? res.json(pc) : res.status(404).send('product-category not found')
 });
 
 router.get('/', async (req, res, next) => {
-	const pcs = await ProductCategory.find().sort({ name: 1 });
+
+	const pcs = await ProductCategory.collection.aggregate(_productCountQuery).toArray();
 	res.json(pcs);
 });
 
