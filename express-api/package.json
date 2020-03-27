@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "debug": "nodemon --inspect-brk app.js"
+    "debug": "nodemon app.js",
+    "debug-inspect": "nodemon --inspect-brk app.js"
   },
   "keywords": [],
   "author": "Sreenivasa Rajiv <sreenivasarajiv@gmail.com>",

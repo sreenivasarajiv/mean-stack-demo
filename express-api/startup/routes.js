@@ -1,12 +1,12 @@
 const express = require('express');
 require('express-async-errors');
 
-const productCategory = require('../routes/product-category');
-const product = require('../routes/product');
+const productCategory = require('../routes/product-category.route');
+const product = require('../routes/product.route');
 
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
-const error = require('../middlewares/error');
+const { errorHandler } = require('../middlewares/error');
 
 module.exports = function (app) {
 
@@ -19,6 +19,6 @@ module.exports = function (app) {
     app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
     // global error handler
-    app.use(error);
+    app.use(errorHandler);
 
 }

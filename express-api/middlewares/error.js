@@ -1,6 +1,6 @@
 const winston = require('winston');
 
-module.exports = function (err, req, res, next) {
+module.exports.errorHandler = function (err, req, res, next) {
     // handles global errors
 
     // log the error
