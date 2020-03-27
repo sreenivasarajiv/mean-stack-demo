@@ -2,8 +2,8 @@ const { Product, validateProduct } = require('../models/product');
 
 // CREATE
 async function createProduct(product) {
-    const product = new Product(product);
-    return await product.save();
+    const _product = new Product(product);
+    return await _product.save();
 }
 
 // READ 
